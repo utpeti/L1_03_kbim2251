@@ -39,19 +39,21 @@ main:
 
     ;((c - (b * a)) div (a + b))
     mov eax, [va]
-    imul [vb]
+    mov ebx, [vb]
+    mul ebx
     mov ecx, [vc]
     sub ecx, eax
     mov ebx, [va]
     add ebx, [vb]
     mov eax, ecx
-    idiv ebx
+    div ebx
     push eax ; +1 stack
 
     ;((b + e) div c) 
     mov eax, [vb]
     add eax, [ve]
-    idiv [vc]
+    mov ecx, [vc]
+    idiv ecx
     push eax ; +1 stack
 
     ;((f + g - 8) mod (g div 3))
@@ -60,7 +62,8 @@ main:
     sub eax, 8
     mov ebx, eax
     mov eax, [vg]
-    idiv 3
+    mov ecx, 3
+    idiv ecx
     mov ecx, eax
     mov eax, ebx
     idiv ecx
@@ -69,9 +72,9 @@ main:
     ;+d
 
     ;gathering the data
-    pull eax
-    pull ebx
-    pull ecx
+    pop eax
+    pop ebx
+    pop ecx
     sub ecx, ebx
     sub ecx, eax
     add ecx, [vd]

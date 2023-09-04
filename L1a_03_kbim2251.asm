@@ -71,7 +71,7 @@ main:
 
     ;+d
 
-    ;gathering the data
+    ;gathering the results
     pop eax
     pop ebx
     pop ecx
@@ -79,7 +79,7 @@ main:
     sub ecx, eax
     add ecx, [vd]
 
-    ;result
+    ;final result
     mov eax, str_r
     call io_writeln
     mov eax, ecx

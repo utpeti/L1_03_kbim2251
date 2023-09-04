@@ -46,32 +46,37 @@ main:
     ;((c - (b * a)) div (a + b))
     mov eax, [va]
     mov ebx, [vb]
-    mul ebx
+    cdq
+    imul ebx
     mov ecx, [vc]
     sub ecx, eax
     mov ebx, [va]
     add ebx, [vb]
     mov eax, ecx
-    div ebx
+    cdq
+    idiv ebx
     push eax ; +1 stack
 
     ;((b + e) div c) 
     mov eax, [vb]
     add eax, [ve]
     mov ecx, [vc]
+    cdq
     idiv ecx
     push eax ; +1 stack
 
-    ;((f + g - 8) mod (g div 3))
+    ;((f + g - 8) mod (g div 3)) --Here's the bug somewhere, maybe idiv(?)
     mov eax, [vf]
     add eax, [vg]
     sub eax, 8
     mov ebx, eax
     mov eax, [vg]
     mov ecx, 3
+    cdq
     idiv ecx
     mov ecx, eax
     mov eax, ebx
+    cdq
     idiv ecx
     push edx ;+1 stack
 

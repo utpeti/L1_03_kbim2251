@@ -9,31 +9,37 @@ global main
 section .text
 main:
     mov eax, str_a
-    call io_writeln
+    call io_writestr
     call io_readint
     mov [va], eax
-    mov eax, str_b
     call io_writeln
+    mov eax, str_b
+    call io_writestr
     call io_readint
     mov [vb], eax
-    mov eax, str_c
     call io_writeln
+    mov eax, str_c
+    call io_writestr
     call io_readint
     mov [vc], eax
-    mov eax, str_d
     call io_writeln
+    mov eax, str_d
+    call io_writestr
     call io_readint
     mov [vd], eax
-    mov eax, str_e
     call io_writeln
+    mov eax, str_e
+    call io_writestr
     call io_readint
     mov [ve], eax
-    mov eax, str_f
     call io_writeln
+    mov eax, str_f
+    call io_writestr
     call io_readint
     mov [vf], eax
-    mov eax, str_g
     call io_writeln
+    mov eax, str_g
+    call io_writestr
     call io_readint
     mov [vg], eax
 
@@ -81,7 +87,7 @@ main:
 
     ;final result
     mov eax, str_r
-    call io_writeln
+    call io_writestr
     mov eax, ecx
     call io_writeint
 

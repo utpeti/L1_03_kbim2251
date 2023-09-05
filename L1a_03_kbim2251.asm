@@ -65,7 +65,7 @@ main:
     idiv ecx
     push eax ; +1 stack
 
-    ;((f + g - 8) mod (g div 3)) --Here's the bug somewhere, maybe idiv(?)
+    ;((f + g - 8) mod (g div 3)) 
     mov eax, [vf]
     add eax, [vg]
     sub eax, 8
